@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">goSquad</string>
+    <string name="home_icon">Home</string>
+    <string name="game_icon">Game</string>
+    <string name="chat_icon">Chat</string>
+    <string name="profile_icon">Profile</string>
+    <string name="guilds_icon">Guilds</string>
+    <string name="accepted_games">Lobby status</string>
+    <string name="profile_name">profile_name</string>
+    <string name="navigation_drawer_open">Open navigation Drawer</string>
+    <string name="navigation_drawer_close">Close navigation Drawer</string>
+</resources>
