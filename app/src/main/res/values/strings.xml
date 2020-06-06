@@ -9,4 +9,8 @@
     <string name="profile_name">profile_name</string>
     <string name="navigation_drawer_open">Open navigation Drawer</string>
     <string name="navigation_drawer_close">Close navigation Drawer</string>
+
+    <string name="fragment_game_choose_game_hint">Choose the game</string>
+    <string name="fragment_game_enter_description">Enter the description</string>
+    <string name="fragment_game_enter_amount_of_people">Enter amount of people</string>
 </resources>
