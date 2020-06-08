@@ -58,8 +58,10 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
         /*bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();*/
     }
