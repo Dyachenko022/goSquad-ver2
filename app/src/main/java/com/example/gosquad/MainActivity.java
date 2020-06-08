@@ -7,41 +7,27 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.gosquad.adapter.ViewPagerAdapter;
+import com.example.gosquad.util.CustomViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
+    private CustomViewPager viewPager;
+    private PagerAdapter pagerAdapter;
 
-   /* private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    switch (item.getItemId())
-                    {
-                        case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
-                            break;
-                        case R.id.nav_game:
-                            selectedFragment = new GameFragment();
-                            break;
-                        case R.id.nav_chat:
-                            selectedFragment = new ChatFragment();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-                    return true;
-                }
-            };*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        /*bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();*/
+
     }
 
     @Override
