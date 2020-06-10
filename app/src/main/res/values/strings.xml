@@ -13,4 +13,11 @@
     <string name="fragment_game_choose_game_hint">Choose the game</string>
     <string name="fragment_game_enter_description">Enter the description</string>
     <string name="fragment_game_enter_amount_of_people">Enter amount of people</string>
+
+    <string name="fragment_profile_games">List of games</string>
+    <string name="fragment_profile_manage_game">Manage games</string>
+
+    <string name="information_nav">information</string>
+    <string name="stats_nav">stats</string>
+    <string name="history_nav">history</string>
 </resources>

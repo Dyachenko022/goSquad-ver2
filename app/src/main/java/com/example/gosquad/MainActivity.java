@@ -10,6 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.Navigator;
+import androidx.navigation.NavigatorProvider;
+import androidx.navigation.fragment.FragmentNavigator;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -45,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-
+        //Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        //KeepStateNavigator keepStateNavigator = new KeepStateNavigator(this, fragment.getChildFragmentManager(), R.id.nav_host_fragment);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        //NavigatorProvider navigatorProvider = navController.getNavigatorProvider();
+        //navigatorProvider.addNavigator(keepStateNavigator);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
 

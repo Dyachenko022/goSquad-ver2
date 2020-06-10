@@ -15,4 +15,8 @@
         android:id="@+id/gameFragment"
         android:name="com.example.gosquad.GameFragment"
         android:label="GameFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.gosquad.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>
