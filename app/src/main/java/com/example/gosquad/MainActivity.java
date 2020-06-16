@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -28,8 +29,45 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    private CustomViewPager viewPager;
-    private PagerAdapter pagerAdapter;
+    final Fragment homeFragment = new HomeFragment();
+    Fragment gameFragment = new GameFragment();
+    final Fragment chatFragment = new ChatFragment();
+    final Fragment profileFragment = new ProfileFragment();
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = homeFragment;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.homeFragment:
+                    fm.beginTransaction().hide(active).show(homeFragment).commit();
+                    active = homeFragment;
+                    return true;
+
+                case R.id.gameFragment:
+                    if(active == gameFragment)
+                    {
+                        fm.beginTransaction().detach(gameFragment);
+                        gameFragment = new GameFragment();
+                        fm.beginTransaction().add(R.id.fragment_container, gameFragment, "2").hide(gameFragment).commit();
+                    }
+                    fm.beginTransaction().hide(active).show(gameFragment).commit();
+                    active = gameFragment;
+                    return true;
+
+                case R.id.chatFragment:
+                    fm.beginTransaction().hide(active).show(chatFragment).commit();
+                    active = chatFragment;
+                    return true;
+                case R.id.profileFragment:
+                    fm.beginTransaction().hide(active).show(profileFragment).commit();
+                    active = profileFragment;
+                    return true;
+            }
+            return false;
+        }
+    };
 
 
 
@@ -37,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fm.beginTransaction().add(R.id.fragment_container, profileFragment, "4").hide(profileFragment).commit();
+        fm.beginTransaction().add(R.id.fragment_container, chatFragment, "3").hide(chatFragment).commit();
+        fm.beginTransaction().add(R.id.fragment_container, gameFragment, "2").hide(gameFragment).commit();
+        fm.beginTransaction().add(R.id.fragment_container,homeFragment, "1").commit();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,13 +91,10 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-        //Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        //KeepStateNavigator keepStateNavigator = new KeepStateNavigator(this, fragment.getChildFragmentManager(), R.id.nav_host_fragment);
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //NavigatorProvider navigatorProvider = navController.getNavigatorProvider();
-        //navigatorProvider.addNavigator(keepStateNavigator);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        //NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
 
     }

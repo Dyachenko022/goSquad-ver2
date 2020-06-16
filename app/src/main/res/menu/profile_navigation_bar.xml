@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/informationFragment"
+        android:id="@+id/informationFragment2"
         android:title="@string/information_nav"
         />
 
     <item
-        android:id="@+id/statsFragment"
+        android:id="@+id/statsFragment2"
         android:title="@string/stats_nav"
         />
     <item
-        android:id="@+id/historyFragment"
+        android:id="@+id/historyFragment2"
         android:title="@string/history_nav"
         />
 </menu>
